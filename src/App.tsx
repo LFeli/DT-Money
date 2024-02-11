@@ -1,4 +1,5 @@
 import { Header } from './components/Header'
+import { PriceHighlight } from './components/PriceHighlight'
 import { Summary } from './components/Summary'
 
 export function App() {
@@ -14,9 +15,7 @@ export function App() {
               <td className="px-8 py-5 bg-gray-700 w-1/2 rounded-tl-md rounded-bl-md">
                 Desenvolvimento de site
               </td>
-              <td className="px-8 py-5 bg-gray-700 text-green-300">
-                R$ 12.000,00
-              </td>
+              <PriceHighlight statusColor="income">R$ 10.000,00</PriceHighlight>
               <td className="px-8 py-5 bg-gray-700 ">Venda</td>
               <td className="px-8 py-5 bg-gray-700 rounded-tr-md rounded-br-md">
                 13/04/2022
@@ -26,9 +25,9 @@ export function App() {
               <td className="px-8 py-5 bg-gray-700 w-1/2 rounded-tl-md rounded-bl-md">
                 Aluguel do apartamento
               </td>
-              <td className="px-8 py-5 bg-gray-700 text-red-300">
+              <PriceHighlight statusColor="outcome">
                 - R$ 1.200,00
-              </td>
+              </PriceHighlight>
               <td className="px-8 py-5 bg-gray-700 ">Casa</td>
               <td className="px-8 py-5 bg-gray-700 rounded-tr-md rounded-br-md">
                 13/04/2022
