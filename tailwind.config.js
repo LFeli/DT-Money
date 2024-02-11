@@ -3,6 +3,14 @@ export default {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      padding: {
+        30: '7.5rem'
+      },
+
+      fontSize: {
+        '3.5xl': '2rem'
+      },
+
       colors: {
         'gray-100': '#E1E1E6',
         'gray-300': '#C4C4CC',
@@ -20,7 +28,7 @@ export default {
         'red-300': '#F75A68',
         'red-500': '#AB222E',
         'red-700': '#7A1921',
-      }
+      },
     },
   },
   plugins: [],

@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 body {
+  height: 100%;
+  background-color: #202024;
+
   font-family: 'Roboto', sans-serif;
 
   font-synthesis: none;
