@@ -1,5 +1,6 @@
 import { Header } from './components/Header'
 import { PriceHighlight } from './components/PriceHighlight'
+import { SearchForm } from './components/SearchForm'
 import { Summary } from './components/Summary'
 
 export function App() {
@@ -9,6 +10,7 @@ export function App() {
       <Summary />
 
       <div className="w-full max-w-6xl mt-16 mx-auto mb-0 px-6">
+        <SearchForm />
         <table className="w-full mt-6 border-separate border-spacing-y-2">
           <tbody>
             <tr>
