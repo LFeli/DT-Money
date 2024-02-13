@@ -4,6 +4,7 @@ import { SearchForm } from '../components/SearchForm'
 import { PriceHighlight } from '../components/PriceHighlight'
 import { useContext } from 'react'
 import { TransactionsContext } from '../contexts/TransactionContext'
+import { dateFormatter, priceFormatter } from '../utils/formatter'
 
 export function Transactions() {
   const { transactions } = useContext(TransactionsContext)
@@ -24,13 +25,14 @@ export function Transactions() {
                     {transaction.description}
                   </td>
                   <PriceHighlight statusColor={transaction.type}>
-                    {transaction.price}
+                    {transaction.type === 'outcome' && '- '}
+                    {priceFormatter.format(transaction.price)}
                   </PriceHighlight>
                   <td className="px-8 py-5 bg-gray-700 ">
                     {transaction.category}
                   </td>
                   <td className="px-8 py-5 bg-gray-700 rounded-tr-md rounded-br-md">
-                    {transaction.createdAt}
+                    {dateFormatter.format(new Date(transaction.createdAt))}
                   </td>
                 </tr>
               )

@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { TransactionsContext } from '../contexts/TransactionContext'
 import { ArrowDownCircle, ArrowUpCircle, DollarSign } from 'lucide-react'
+import { priceFormatter } from '../utils/formatter'
 
 export function Summary() {
   const { transactions } = useContext(TransactionsContext)
@@ -32,7 +33,9 @@ export function Summary() {
           <ArrowUpCircle size={32} className="text-green-300" />
         </header>
 
-        <strong className="block mt-4 text-3.5xl">{summary.income}</strong>
+        <strong className="block mt-4 text-3.5xl">
+          {priceFormatter.format(summary.income)}
+        </strong>
       </div>
 
       <div className="bg-gray-600 p-8 rounded-md">
@@ -41,7 +44,9 @@ export function Summary() {
           <ArrowDownCircle size={32} className="text-red-300" />
         </header>
 
-        <strong className="block mt-4 text-3.5xl">{summary.outcome}</strong>
+        <strong className="block mt-4 text-3.5xl">
+          {priceFormatter.format(summary.outcome)}
+        </strong>
       </div>
 
       <div className="bg-green-700 p-8 rounded-md">
@@ -50,7 +55,9 @@ export function Summary() {
           <DollarSign size={32} className="text-white" />
         </header>
 
-        <strong className="block mt-4 text-3.5xl">{summary.total}</strong>
+        <strong className="block mt-4 text-3.5xl">
+          {priceFormatter.format(summary.total)}
+        </strong>
       </div>
     </section>
   )
