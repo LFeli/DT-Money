@@ -3,12 +3,20 @@ export default {
   content: ['./src/**/*.tsx'],
   theme: {
     extend: {
+      minWidth: {
+        'modal' : '32rem'
+      },
+
       padding: {
         30: '7.5rem'
       },
 
       fontSize: {
-        '3.5xl': '2rem'
+        '3.5xl': '2rem',
+      },
+
+      lineHeight: {
+        0: 0
       },
 
       colors: {
