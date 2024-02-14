@@ -3,25 +3,29 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { X } from 'lucide-react'
 import * as RadioGroup from '@radix-ui/react-radio-group'
 import { TransactionTypeButton } from './TransactionTypeButton'
-import { useForm } from 'react-hook-form'
+import { Controller, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 
 const newTransactionFormSchema = z.object({
   descripition: z.string(),
   price: z.number(),
   category: z.string(),
-  // type: z.enum(['income', 'outcome']),
+  type: z.enum(['income', 'outcome']),
 })
 
 type newTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export function NewTransactionModal() {
   const {
+    control,
     register,
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<newTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
+    defaultValues: {
+      type: 'income',
+    },
   })
 
   async function handleCreateNewTransaction(data: newTransactionFormInputs) {
@@ -70,14 +74,26 @@ export function NewTransactionModal() {
             {...register('category')}
           />
 
-          <RadioGroup.Root className="mt-2 grid grid-cols-2 gap-4">
-            <TransactionTypeButton status="income" value="income">
-              Entrada
-            </TransactionTypeButton>
-            <TransactionTypeButton status="outcome" value="outcome">
-              Saída
-            </TransactionTypeButton>
-          </RadioGroup.Root>
+          <Controller
+            control={control}
+            name="type"
+            render={({ field }) => {
+              return (
+                <RadioGroup.Root
+                  className="mt-2 grid grid-cols-2 gap-4"
+                  onValueChange={field.onChange}
+                  value={field.value}
+                >
+                  <TransactionTypeButton status="income" value="income">
+                    Entrada
+                  </TransactionTypeButton>
+                  <TransactionTypeButton status="outcome" value="outcome">
+                    Saída
+                  </TransactionTypeButton>
+                </RadioGroup.Root>
+              )
+            }}
+          />
 
           <button
             type="submit"
